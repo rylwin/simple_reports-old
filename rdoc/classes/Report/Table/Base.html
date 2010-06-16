@@ -1,0 +1,1195 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Report::Table::Base</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Report::Table::Base</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/simple_reports/report/table/base_rb.html">
+                lib/simple_reports/report/table/base.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000043">align</a>&nbsp;&nbsp;
+      <a href="#M000052">avg</a>&nbsp;&nbsp;
+      <a href="#M000055">cache</a>&nbsp;&nbsp;
+      <a href="#M000057">cached?</a>&nbsp;&nbsp;
+      <a href="#M000054">cached_row</a>&nbsp;&nbsp;
+      <a href="#M000044">column_widths</a>&nbsp;&nbsp;
+      <a href="#M000067">create_table</a>&nbsp;&nbsp;
+      <a href="#M000046">find</a>&nbsp;&nbsp;
+      <a href="#M000038">font_size=</a>&nbsp;&nbsp;
+      <a href="#M000042">format</a>&nbsp;&nbsp;
+      <a href="#M000040">header</a>&nbsp;&nbsp;
+      <a href="#M000041">header</a>&nbsp;&nbsp;
+      <a href="#M000068">import_row_data</a>&nbsp;&nbsp;
+      <a href="#M000049">index</a>&nbsp;&nbsp;
+      <a href="#M000056">load_table_from_cache</a>&nbsp;&nbsp;
+      <a href="#M000039">name</a>&nbsp;&nbsp;
+      <a href="#M000037">new</a>&nbsp;&nbsp;
+      <a href="#M000053">new_row</a>&nbsp;&nbsp;
+      <a href="#M000047">reset</a>&nbsp;&nbsp;
+      <a href="#M000066">row_key</a>&nbsp;&nbsp;
+      <a href="#M000045">rows</a>&nbsp;&nbsp;
+      <a href="#M000050">set</a>&nbsp;&nbsp;
+      <a href="#M000058">should_cache?</a>&nbsp;&nbsp;
+      <a href="#M000059">sort</a>&nbsp;&nbsp;
+      <a href="#M000051">sum</a>&nbsp;&nbsp;
+      <a href="#M000065">table_key</a>&nbsp;&nbsp;
+      <a href="#M000048">table_time</a>&nbsp;&nbsp;
+      <a href="#M000060">to_csv</a>&nbsp;&nbsp;
+      <a href="#M000063">to_html</a>&nbsp;&nbsp;
+      <a href="#M000062">to_latex</a>&nbsp;&nbsp;
+      <a href="#M000064">to_s</a>&nbsp;&nbsp;
+      <a href="#M000061">to_text</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">NUMBER_FORMATS</td>
+          <td>=</td>
+          <td class="context-item-value">[:number, :number_no_format, :currency, :percent, :float]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">FONT_SIZES</td>
+          <td>=</td>
+          <td class="context-item-value">[:tiny, :small, :normal, :large]</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">font_size</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">format</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">header</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">row_colors</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">size</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">sort_by</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">sort_order</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">sortable</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">title</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="#M000040" class="method-signature">
+          <span class="method-name">header</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Base.html#M000040">header</a> array of the table
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000040-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 50</span>
+50:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">header</span>
+51:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;self.header not implemented&quot;</span>
+52:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="#M000039" class="method-signature">
+          <span class="method-name">name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Base.html#M000039">name</a> of the table. If the full
+class is Report::Table::SomeTable, then some_table is returned.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000039-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 45</span>
+45:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>
+46:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">underscore</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;/&quot;</span>).<span class="ruby-identifier">last</span>
+47:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <a href="#M000037" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a <a href="Base.html#M000037">new</a> table object.
+</p>
+<p>
+Can take several options:
+</p>
+<table>
+<tr><td valign="top"><tt><a href="Base.html#M000040">header</a></tt>:</td><td>=&gt; Array of <a href="Base.html#M000040">header</a> strings
+
+</td></tr>
+<tr><td valign="top"><tt><a href="Base.html#M000042">format</a></tt>:</td><td>=&gt; Array of formatting options, where each slot in the array is a
+formatting option (see reports_helper#apply_format) or an array of
+formatting options for each value in the corresponding data column
+
+</td></tr>
+<tr><td valign="top"><tt>title</tt>:</td><td>=&gt; A title for this table
+
+</td></tr>
+<tr><td valign="top"><tt>row_colors</tt>:</td><td>=&gt; Will cycle through these row colors, including the <a
+href="Base.html#M000040">header</a> row
+
+</td></tr>
+<tr><td valign="top"><tt>row_data</tt>:</td><td>=&gt; Creates <a href="Base.html#M000045">rows</a> for the table from the
+data provided. <tt>row_data</tt> must be an array of arrays, where each
+array
+
+<pre>
+   contains the data for an entire row. If +row_data+ is passed, a +header+ should be
+   provided. Also, passing a +format+ is necessary if the table is to be outputted using one of the formatters.
+   Be aware that if +row_data+ is passed, the create_table method will never be called.
+</pre>
+</td></tr>
+</table>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000037-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000037-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 19</span>
+19:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>={})
+20:         <span class="ruby-ivar">@rows</span> = []
+21:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:title</span>]
+22:         <span class="ruby-ivar">@row_colors</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:row_colors</span>]
+23:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">format</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>]<span class="ruby-operator">||</span>[]
+24:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">header</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:header</span>]<span class="ruby-operator">||</span>[]
+25:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">font_size</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:font_size</span>]<span class="ruby-operator">||</span><span class="ruby-identifier">:normal</span>
+26:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">size</span> = <span class="ruby-identifier">header</span>.<span class="ruby-identifier">size</span>
+27:         <span class="ruby-ivar">@table_key</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:table_key</span>]
+28:         <span class="ruby-ivar">@sortable</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sortable</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sortable</span>]
+29:         <span class="ruby-ivar">@sort_by</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sort_by</span>]<span class="ruby-operator">||</span><span class="ruby-identifier">header</span>.<span class="ruby-identifier">first</span>
+30:     
+31:         <span class="ruby-ivar">@sort_order</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sort_order</span>].<span class="ruby-identifier">blank?</span> <span class="ruby-value">? </span><span class="ruby-value str">&quot;asc&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sort_order</span>].<span class="ruby-identifier">downcase</span>
+32:         <span class="ruby-ivar">@sort_order</span> = <span class="ruby-ivar">@sort_order</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;desc&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
+33: 
+34:         <span class="ruby-identifier">import_row_data</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:row_data</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:row_data</span>]
+35:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="#M000043" class="method-signature">
+          <span class="method-name">align</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called when outputting the table to decide how each column
+should be aligned. Numbers, currencies, percents, and floats are all
+right-aligned. Everything else is left-aligned by default. If different
+alignment preferecens are required, this method can be overridden.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000043-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000043-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 73</span>
+73:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">align</span>
+74:         <span class="ruby-identifier">align</span> = {}
+75:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+76:           <span class="ruby-identifier">align</span>[<span class="ruby-identifier">index</span>] = (<span class="ruby-constant">NUMBER_FORMATS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">format</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">:right</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:left</span>)
+77:         <span class="ruby-keyword kw">end</span>
+78:         <span class="ruby-identifier">align</span>
+79:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="#M000052" class="method-signature">
+          <span class="method-name">avg</span><span class="method-args">(heading)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Averages the values in a column. This method uses the <a
+href="Base.html#M000051">sum</a> and divides by the number of <a
+href="Base.html#M000045">rows</a> in the table.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000052-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 146</span>
+146:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">avg</span>(<span class="ruby-identifier">heading</span>)
+147:         <span class="ruby-identifier">sum</span>(<span class="ruby-identifier">heading</span>)<span class="ruby-operator">/</span><span class="ruby-identifier">rows</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_f</span>
+148:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000055" class="method-detail">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+          <a href="#M000055" class="method-signature">
+          <span class="method-name">cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Caches the table by calling <a href="Base.html#M000055">cache</a> on each
+row.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000055-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000055-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 173</span>
+173:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache</span>
+174:         <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:cache</span>)
+175:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000057" class="method-detail">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+          <a href="#M000057" class="method-signature">
+          <span class="method-name">cached?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true if a cached row exists for this table. This method may need to
+be overriden for more complex behavior.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000057-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 184</span>
+184:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cached?</span>
+185:         <span class="ruby-constant">Report</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">CachedRow</span>.<span class="ruby-identifier">exists_for_table?</span>(<span class="ruby-identifier">table_key</span>)
+186:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000054" class="method-detail">
+        <a name="M000054"></a>
+
+        <div class="method-heading">
+          <a href="#M000054" class="method-signature">
+          <span class="method-name">cached_row</span><span class="method-args">(table_key, row_key, &amp;new_row_code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Loads a cached row into the table. If none is found, the passed block is
+executed to create the <a href="Base.html#M000037">new</a> row. This block
+can be used to call <a href="Base.html#M000053">new_row</a> to add the row
+or, if the result of the block is not a <a
+href="Row.html">Report::Table::Row</a>, this method will create a <a
+href="Base.html#M000037">new</a> row using the block result.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000054-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000054-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 159</span>
+159:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cached_row</span>(<span class="ruby-identifier">table_key</span>, <span class="ruby-identifier">row_key</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">new_row_code</span>)
+160:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cached_row</span> = <span class="ruby-constant">Report</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">CachedRow</span>.<span class="ruby-identifier">find_by_keys</span>(<span class="ruby-identifier">table_key</span>, <span class="ruby-identifier">row_key</span>)
+161:           <span class="ruby-identifier">new_row</span> <span class="ruby-identifier">cached_row</span>.<span class="ruby-identifier">data</span>
+162:         <span class="ruby-keyword kw">else</span>
+163:           <span class="ruby-identifier">result</span> = <span class="ruby-identifier">new_row_code</span>.<span class="ruby-identifier">call</span>
+164:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Report</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">Row</span>
+165:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>
+166:           <span class="ruby-keyword kw">else</span>
+167:             <span class="ruby-identifier">new_row</span>(<span class="ruby-identifier">result</span>)
+168:           <span class="ruby-keyword kw">end</span>
+169:         <span class="ruby-keyword kw">end</span>
+170:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="#M000044" class="method-signature">
+          <span class="method-name">column_widths</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Can be overwritten to define column widths in the form of a hash:
+{column_number =&gt; PDF points}
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000044-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 82</span>
+82:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">column_widths</span>
+83:         {}
+84:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="#M000046" class="method-signature">
+          <span class="method-name">find</span><span class="method-args">(value, column=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Finds the first row to match the value in the provided column. If a column
+isn&#8216;t provided, then the first column is used by default. Returns nil
+if no <a href="Base.html#M000045">rows</a> match
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000046-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000046-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 106</span>
+106:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">column</span>=<span class="ruby-keyword kw">nil</span>)
+107:         <span class="ruby-identifier">column</span> = <span class="ruby-identifier">header</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">column</span>
+108:     
+109:         <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+110:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">row</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">row</span>.<span class="ruby-identifier">value_at</span>(<span class="ruby-identifier">column</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">value</span>
+111:         <span class="ruby-keyword kw">end</span>
+112:     
+113:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+114:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="#M000038" class="method-signature">
+          <span class="method-name">font_size=</span><span class="method-args">(size)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000038-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000038-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 39</span>
+39:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">font_size=</span>(<span class="ruby-identifier">size</span>)
+40:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Not a valid size&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">FONT_SIZES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">size</span>)
+41:         <span class="ruby-ivar">@font_size</span> = <span class="ruby-identifier">size</span>
+42:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="#M000042" class="method-signature">
+          <span class="method-name">format</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Should return an array with the corresponding <a
+href="Base.html#M000042">format</a> of each column. If <a
+href="Base.html#M000042">format</a> returns an empty array, no formatting
+is applied. It is also permitted to leave some columns with a
+&#8216;nil&#8217; <a href="Base.html#M000042">format</a>, so that it will
+not be formated. Some possible <a href="Base.html#M000042">format</a>
+options:
+</p>
+<table>
+<tr><td valign="top"><tt>currency</tt>:</td><td>formats as currency
+
+</td></tr>
+<tr><td valign="top"><tt>long_date</tt>:</td><td>long date
+
+</td></tr>
+<tr><td valign="top"><tt>short_date</tt>:</td><td>short date
+
+</td></tr>
+<tr><td valign="top"><tt>percent</tt>:</td><td>percentage
+
+</td></tr>
+</table>
+<p>
+These formats are applied by ReportsHelper#format_data
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000042-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000042-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 66</span>
+66:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">format</span>
+67:         <span class="ruby-ivar">@format</span>
+68:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="#M000041" class="method-signature">
+          <span class="method-name">header</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000041-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000041-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 54</span>
+54:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">header</span>
+55:         <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">header</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@header</span>
+56:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="#M000049" class="method-signature">
+          <span class="method-name">index</span><span class="method-args">(heading)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The column <a href="Base.html#M000049">index</a> of a given heading.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000049-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 127</span>
+127:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>(<span class="ruby-identifier">heading</span>)
+128:         <span class="ruby-identifier">col</span> = <span class="ruby-identifier">header</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">heading</span>)
+129:         <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Heading '#{heading}' not in table.&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">col</span>.<span class="ruby-identifier">nil?</span>
+130:         <span class="ruby-identifier">col</span>
+131:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000056" class="method-detail">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+          <a href="#M000056" class="method-signature">
+          <span class="method-name">load_table_from_cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Loads the table by fetching all CachedRows that match the table&#8216;s
+key.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000056-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000056-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 178</span>
+178:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_table_from_cache</span>
+179:         <span class="ruby-constant">Report</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">CachedRow</span>.<span class="ruby-identifier">find_each</span>(<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-identifier">:table_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">table_key</span>}) { <span class="ruby-operator">|</span><span class="ruby-identifier">cr</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@rows</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">to_row</span>(<span class="ruby-keyword kw">self</span>) }
+180:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <a href="#M000053" class="method-signature">
+          <span class="method-name">new_row</span><span class="method-args">(data=[], options ={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a <a href="Base.html#M000037">new</a> row in the table.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000053-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000053-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 151</span>
+151:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_row</span>(<span class="ruby-identifier">data</span>=[], <span class="ruby-identifier">options</span> ={})
+152:         <span class="ruby-ivar">@rows</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Report</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">Row</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">data</span>, <span class="ruby-identifier">options</span>)
+153:         <span class="ruby-ivar">@rows</span>.<span class="ruby-identifier">last</span>
+154:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="#M000047" class="method-signature">
+          <span class="method-name">reset</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Clears out any loaded table data. Should be called in order to allow
+regenerating table.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000047-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000047-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 117</span>
+117:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset</span>
+118:         <span class="ruby-ivar">@rows</span> = <span class="ruby-keyword kw">nil</span>
+119:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="#M000066" class="method-signature">
+          <span class="method-name">row_key</span><span class="method-args">(row)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000066-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 246</span>
+246:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">row_key</span>(<span class="ruby-identifier">row</span>)
+247:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;No row_key defined. Either pass a table_key to the table as an option or override row_key method.&quot;</span>
+248:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="#M000045" class="method-signature">
+          <span class="method-name">rows</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method calls <a href="Base.html#M000067">create_table</a> to generate
+the table data. It caches the results so that the table is not re-generated
+when <a href="Base.html#M000045">rows</a> is called again. In order to
+re-generate the whole table, <a href="Base.html#M000047">reset</a> should
+be called first, which clears out the data.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000045-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 88</span>
+ 88:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rows</span>
+ 89:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@rows</span>.<span class="ruby-identifier">empty?</span>
+ 90:           <span class="ruby-identifier">start_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span>
+ 91:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">should_cache?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">cached?</span>
+ 92:             <span class="ruby-identifier">load_table_from_cache</span>
+ 93:           <span class="ruby-keyword kw">else</span>
+ 94:             <span class="ruby-identifier">create_table</span> 
+ 95:             <span class="ruby-identifier">cache</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">should_cache?</span>
+ 96:           <span class="ruby-keyword kw">end</span>
+ 97:           <span class="ruby-identifier">end_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span>
+ 98:           <span class="ruby-ivar">@table_time</span> = <span class="ruby-identifier">end_time</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start_time</span>          
+ 99:         <span class="ruby-keyword kw">end</span>
+100:     
+101:         <span class="ruby-ivar">@rows</span>
+102:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="#M000050" class="method-signature">
+          <span class="method-name">set</span><span class="method-args">(row, heading, value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Deprecated: should use <a
+href="Row.html#M000026">Report::Table::Row.set</a> instead
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000050-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 134</span>
+134:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">row</span>, <span class="ruby-identifier">heading</span>, <span class="ruby-identifier">value</span>)
+135:         <span class="ruby-identifier">row</span>[<span class="ruby-identifier">index</span>(<span class="ruby-identifier">heading</span>)] = <span class="ruby-identifier">value</span>
+136:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="#M000058" class="method-signature">
+          <span class="method-name">should_cache?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+By default, false. However, this can be overridden to turn caching on.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000058-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000058-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 189</span>
+189:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">should_cache?</span>
+190:         <span class="ruby-keyword kw">false</span>
+191:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="#M000059" class="method-signature">
+          <span class="method-name">sort</span><span class="method-args">(column=@sort_by, asc = @sort_order)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sorts all <a href="Base.html#M000045">rows</a> currently in the table.
+</p>
+<ul>
+<li>column (String): The string must match an existing <a
+href="Base.html#M000040">header</a> string
+
+</li>
+<li>asc (Bool): If true, then the <a href="Base.html#M000059">sort</a> is in
+ascending order. Otherwise, descending. True by default
+
+</li>
+</ul>
+<p>
+&#8212; TODO: get <a href="Base.html#M000059">sort</a> by multiple columns
+to work
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000059-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 198</span>
+198:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort</span>(<span class="ruby-identifier">column</span>=<span class="ruby-ivar">@sort_by</span>, <span class="ruby-identifier">asc</span> = <span class="ruby-ivar">@sort_order</span>)
+199:         <span class="ruby-identifier">column_format</span> = <span class="ruby-identifier">format</span>[<span class="ruby-identifier">index</span>(<span class="ruby-identifier">column</span>)]
+200:         <span class="ruby-identifier">x_sort_string</span> =  <span class="ruby-node">&quot;x.data[index('#{column}')]&quot;</span>
+201:         <span class="ruby-identifier">y_sort_string</span> = <span class="ruby-node">&quot;y.data[index('#{column}')]&quot;</span>
+202:     
+203:         <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">NUMBER_FORMATS</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">format</span>[<span class="ruby-identifier">index</span>(<span class="ruby-identifier">column</span>)]
+204:           <span class="ruby-identifier">x_sort_string</span> = <span class="ruby-identifier">x_sort_string</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;.to_s&quot;</span>
+205:           <span class="ruby-identifier">y_sort_string</span> = <span class="ruby-identifier">y_sort_string</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;.to_s&quot;</span>
+206:         <span class="ruby-keyword kw">end</span>
+207: 
+208:         <span class="ruby-ivar">@rows</span>.<span class="ruby-identifier">sort!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">instance_eval</span>(<span class="ruby-identifier">x_sort_string</span>) <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">instance_eval</span>(<span class="ruby-identifier">y_sort_string</span>)}
+209:     
+210:         <span class="ruby-ivar">@rows</span>.<span class="ruby-identifier">reverse!</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">asc</span>
+211:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="#M000051" class="method-signature">
+          <span class="method-name">sum</span><span class="method-args">(heading)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sums up the values in a column, as denoted by the column heading.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000051-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 139</span>
+139:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sum</span>(<span class="ruby-identifier">heading</span>)
+140:         <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
+141:         <span class="ruby-ivar">@rows</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">row</span>.<span class="ruby-identifier">data</span>[<span class="ruby-identifier">index</span>(<span class="ruby-identifier">heading</span>)].<span class="ruby-identifier">blank?</span> <span class="ruby-value">? </span><span class="ruby-value">0</span><span class="ruby-value">.0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">row</span>.<span class="ruby-identifier">data</span>[<span class="ruby-identifier">index</span>(<span class="ruby-identifier">heading</span>)])}
+142:         <span class="ruby-identifier">sum</span>
+143:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
+
+        <div class="method-heading">
+          <a href="#M000065" class="method-signature">
+          <span class="method-name">table_key</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000065-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000065-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 242</span>
+242:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_key</span>
+243:         <span class="ruby-ivar">@table_key</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#raise(&quot;No table_key defined. Either pass a table_key to the table as an option or override table_key method.&quot;)</span>
+244:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="#M000048" class="method-signature">
+          <span class="method-name">table_time</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The time it took to generate the table in milliseconds.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000048-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 122</span>
+122:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_time</span>
+123:         <span class="ruby-ivar">@table_time</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000</span>
+124:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="#M000060" class="method-signature">
+          <span class="method-name">to_csv</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000060-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 213</span>
+213:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_csv</span>
+214:         <span class="ruby-identifier">csv</span>=<span class="ruby-value str">&quot;&quot;</span>
+215:         <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">header</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;\&quot;#{d}\&quot;&quot;</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>
+216:         <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+217:           <span class="ruby-comment cmt"># sanitize the data by surrounding in quotes</span>
+218:           <span class="ruby-identifier">data</span> = <span class="ruby-identifier">row</span>.<span class="ruby-identifier">data</span>.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;\&quot;#{d}\&quot;&quot;</span>}
+219:           <span class="ruby-comment cmt"># insert commas between each column of data, stick on a newline char, and place the row in or csv output</span>
+220:           <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>
+221:         <span class="ruby-keyword kw">end</span>
+222:         <span class="ruby-identifier">csv</span>
+223:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+          <a href="#M000063" class="method-signature">
+          <span class="method-name">to_html</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000063-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000063-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 233</span>
+233:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_html</span>
+234:         <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">html_table</span>(<span class="ruby-keyword kw">self</span>)
+235:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="#M000062" class="method-signature">
+          <span class="method-name">to_latex</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000062-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 229</span>
+229:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_latex</span>
+230:         <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">latex_table</span>(<span class="ruby-keyword kw">self</span>)
+231:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+          <a href="#M000064" class="method-signature">
+          <span class="method-name">to_s</span><span class="method-args">(format=:text)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000064-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000064-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 237</span>
+237:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">format</span>=<span class="ruby-identifier">:text</span>)
+238:         <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;to_#{format}&quot;</span>)
+239:         <span class="ruby-comment cmt"># to_text</span>
+240:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="#M000061" class="method-signature">
+          <span class="method-name">to_text</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000061-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 225</span>
+225:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_text</span>
+226:         <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">text_table</span>(<span class="ruby-keyword kw">self</span>)
+227:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="#M000067" class="method-signature">
+          <span class="method-name">create_table</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Should return the report as a table, which has the form of an array of
+Report::Table::Rows.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000067-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 253</span>
+253:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_table</span>
+254:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Need to implement abstract method.&quot;</span>    
+255:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="#M000068" class="method-signature">
+          <span class="method-name">import_row_data</span><span class="method-args">(data_arrays)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000068-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/simple_reports/report/table/base.rb, line 257</span>
+257:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">import_row_data</span>(<span class="ruby-identifier">data_arrays</span>)
+258:         <span class="ruby-identifier">data_arrays</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+259:           <span class="ruby-identifier">new_row</span> <span class="ruby-identifier">data</span>
+260:         <span class="ruby-keyword kw">end</span>
+261:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

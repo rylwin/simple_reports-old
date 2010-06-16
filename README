@@ -1,0 +1,23 @@
+SimpleReports
+=============
+
+SimpleReports was designed to give developers complete control over the generation of their reports
+while maintaining a simple interface that allows for rapid development. 
+
+SimpleReports supports output in four formats: HTML, XLS, PDF (Prawn), PDF (Latex, experimental), TXT.
+Map support (i.e., Google Maps API) is built in for HTML and PDF modes.
+
+SimpleReports is still very young, and any help as far as development or ideas are more than welcome.
+
+TODO
+=======
+
+-Caching
+-- Invalidation of cached rows
+-- More complex rules for when to cache
+-- Row, cell formats need to be saved, too
+-Charts
+-More testing
+
+
+Copyright (c) 2010 Ryan Winograd, released under the MIT license

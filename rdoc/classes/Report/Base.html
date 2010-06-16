@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Report::Base</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Report::Base</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/simple_reports/report/base_rb.html">
+                lib/simple_reports/report/base.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="Base.html">Report::Base</a> should be subclassed by all reports.
+The only method that needs to be implemented is <a
+href="Base.html#M000070">tables</a>, and only if the <a
+href="Base.html#M000070">tables</a> are not passed as an option during
+initialization.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000077">create_tables</a>&nbsp;&nbsp;
+      <a href="#M000072">load_data</a>&nbsp;&nbsp;
+      <a href="#M000069">new</a>&nbsp;&nbsp;
+      <a href="#M000071">table_classes</a>&nbsp;&nbsp;
+      <a href="#M000076">table_width</a>&nbsp;&nbsp;
+      <a href="#M000070">tables</a>&nbsp;&nbsp;
+      <a href="#M000075">to_file</a>&nbsp;&nbsp;
+      <a href="#M000074">to_text</a>&nbsp;&nbsp;
+      <a href="#M000073">to_xlsx</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">page_layout</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">title</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <a href="#M000069" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The following options can be passed when creating a <a
+href="Base.html#M000069">new</a> report:
+</p>
+<table>
+<tr><td valign="top">:<tt>title</tt>:</td><td>the title for the report. If none is passed, a default title is set.
+
+</td></tr>
+<tr><td valign="top">:<tt>page_layout</tt>:</td><td>the report page layout, either :portrait or :landscape (default)
+
+</td></tr>
+<tr><td valign="top">:<tt>table</tt>:</td><td>a single table that comprises the report. This option will have no effect
+if :<a href="Base.html#M000070">tables</a> is also used.
+
+</td></tr>
+<tr><td valign="top">:<tt><a href="Base.html#M000070">tables</a></tt>:</td><td>an array of <a href="Base.html#M000070">tables</a> that comprise the
+report. If none are passed, the <a href="Base.html#M000070">tables</a>
+method should be implemented
+
+</td></tr>
+</table>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000069-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 14</span>
+14:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>={})
+15:       <span class="ruby-ivar">@title</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:title</span>]<span class="ruby-operator">||</span><span class="ruby-node">&quot;#{self.class.to_s.demodulize} Report&quot;</span>
+16:       <span class="ruby-ivar">@tables</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:tables</span>]
+17:       <span class="ruby-ivar">@tables</span> = [<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:table</span>]] <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@tables</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-identifier">:table</span>].<span class="ruby-identifier">nil?</span>
+18:       <span class="ruby-ivar">@page_layout</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:page_layout</span>]<span class="ruby-operator">||</span><span class="ruby-identifier">:landscape</span>
+19:       <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+20:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+          <a href="#M000071" class="method-signature">
+          <span class="method-name">table_classes</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method should be overriden to return an array of the table classes
+that are used in the report. This allows for reflecting on what the report
+will generate before any <a href="Base.html#M000070">tables</a> are
+actually instantiated.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000071-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000071-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">table_classes</span>
+32:       <span class="ruby-value str">&quot;Raise self.table_classes not implemented.&quot;</span>
+33:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="#M000072" class="method-signature">
+          <span class="method-name">load_data</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000072-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000072-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 35</span>
+35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_data</span>
+36:       <span class="ruby-identifier">tables</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">rows</span> }
+37:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="#M000076" class="method-signature">
+          <span class="method-name">table_width</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000076-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000076-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 53</span>
+53:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_width</span>
+54:       <span class="ruby-value">50</span>
+55:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="#M000070" class="method-signature">
+          <span class="method-name">tables</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method returns the array of <a href="Base.html#M000070">tables</a>
+that comprise this report. If <a href="Base.html#M000070">tables</a> were
+passed as an option to on initialization, then those <a
+href="Base.html#M000070">tables</a> are returned. Otherwise, the <a
+href="Base.html#M000077">create_tables</a> method is called to generate the
+<a href="Base.html#M000070">tables</a> and the results are cached.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000070-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 25</span>
+25:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tables</span>
+26:       <span class="ruby-ivar">@tables</span><span class="ruby-operator">||</span><span class="ruby-ivar">@tables</span>=<span class="ruby-identifier">create_tables</span>
+27:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="#M000075" class="method-signature">
+          <span class="method-name">to_file</span><span class="method-args">(file_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000075-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000075-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 47</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_file</span>(<span class="ruby-identifier">file_name</span>)
+48:       <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file_name</span>, <span class="ruby-value str">'w'</span>)
+49:       <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">to_text</span>)
+50:       <span class="ruby-identifier">file</span>.<span class="ruby-identifier">close</span>
+51:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="#M000074" class="method-signature">
+          <span class="method-name">to_text</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000074-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000074-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 43</span>
+43:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_text</span>
+44:       <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">text_report</span>(<span class="ruby-keyword kw">self</span>)
+45:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="#M000073" class="method-signature">
+          <span class="method-name">to_xlsx</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000073-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000073-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 39</span>
+39:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xlsx</span>
+40:       <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">xlsx_report</span>(<span class="ruby-keyword kw">self</span>)
+41:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+          <a href="#M000077" class="method-signature">
+          <span class="method-name">create_tables</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Should return the report as a table, which has the form of an array of
+arrays. A single array contains the whole table, and within that array,
+each row is represented by an array that contains the data for that row.
+Deprecated: from now on, <a href="Base.html#M000070">tables</a> method
+should be overridden.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000077-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000077-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/simple_reports/report/base.rb, line 62</span>
+62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_tables</span>
+63:       <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Need to implement abstract method.&quot;</span>    
+64:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
