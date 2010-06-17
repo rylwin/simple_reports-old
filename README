@@ -19,5 +19,19 @@ TODO
 -Charts
 -More testing
 
+EXAMPLE
+=======
+table_data = [[5, "Vanilla"], [3, "Chocolate"], [7, "Strawberry"]]
+table = Report::Table::Base.new(:header => ["Votes", "Flavor"], :row_data => table_data)
+table.to_text
+table.to_latex # raw latex output
+table.to_csv
+table.to_html
+
+Or, from a view:
+text_table(table)
+pdf_table(pdf, table) # uses prawn, not latex
+html_table(table)
+xlsx_report(Report::Base.new(:table => table))
 
 Copyright (c) 2010 Ryan Winograd, released under the MIT license
