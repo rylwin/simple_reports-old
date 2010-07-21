@@ -9,7 +9,7 @@ module ReportsHtmlHelper
       body += html_table(table)
     end
     
-    header + body
+    (header + body.html_safe)
   end
   
   def html_table(table)
@@ -22,7 +22,7 @@ module ReportsHtmlHelper
     else
       table_output = content_tag(:table, html_inner_table(table), :class => html_class, :table_name => table.name)
     end
-    table_title(table) + table_output
+    (table_title(table) + table_output)
   end
   
   def html_map(table)
@@ -46,7 +46,7 @@ module ReportsHtmlHelper
       Mapstraction.header(SimpleReports::MAP[:service]) + map.to_html
     end
     
-    map.div(:width => 600, :height => 400)
+    map.div(:width => 600, :height => 400).html_safe
   end
     
   def table_title(table)
